@@ -34,16 +34,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/images",
-                "output": "/assets/images"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/sounds",
-                "output": "/assets/sounds"
               }
             ],
             "styles": [
@@ -108,16 +98,6 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/images",
-                "output": "/assets/images"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/sounds",
-                "output": "/assets/sounds"
               }
             ],
             "styles": [
