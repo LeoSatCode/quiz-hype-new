@@ -1,0 +1,45 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.TOKEN_QUIZ }}
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: ng build --configuration production --base-href /QuizHype/
+
+    - name: Add .nojekyll
+      run: echo > ./dist/quiz-hype/.nojekyll
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "leosatcode@gmail.com"
+        git config --global user.name "LeoSatCode"
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.TOKEN_QUIZ }}
+        publish_branch: gh-pages
+        publish_dir: ./dist/quiz-hype

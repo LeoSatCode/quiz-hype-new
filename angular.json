@@ -21,11 +21,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/quiz-hype",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -34,20 +34,27 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/images",
+                "output": "/assets/images"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/sounds",
+                "output": "/assets/sounds"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
+              "baseHref": "/QuizHype/",
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -63,6 +70,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "baseHref": "/",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -72,6 +80,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "quiz-hype:build:development"
+          },
           "configurations": {
             "production": {
               "buildTarget": "quiz-hype:build:production"
@@ -97,6 +108,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/images",
+                "output": "/assets/images"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/sounds",
+                "output": "/assets/sounds"
               }
             ],
             "styles": [
@@ -109,6 +130,6 @@
     }
   },
   "cli": {
-    "analytics": "02b35884-1cef-45df-9cdd-f17a42047f16"
+    "analytics": "9e75ba6e-55a8-454d-86c8-7e5e3237b02e"
   }
 }
