@@ -44,7 +44,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/quiz-hype/",
+              "baseHref": "/QuizHype/",
               "aot": true,
               "outputHashing": "all",
               "budgets": [
@@ -112,8 +112,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "9e75ba6e-55a8-454d-86c8-7e5e3237b02e"
   }
 }
